@@ -23,6 +23,11 @@ import com.mapbox.maps.MapboxExperimental
 
 public struct Map: View {
     @State var viewport: Viewport = .styleDefault
+    
+    public init() {
+        
+    }
+    
     public var body: some View {
         #if !SKIP
         MapboxMaps.Map(viewport: $viewport) {
