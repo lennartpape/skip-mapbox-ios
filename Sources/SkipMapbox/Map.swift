@@ -19,7 +19,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
 import com.mapbox.geojson.Point
 import com.mapbox.maps.MapboxExperimental
-import com.mapbox.maps
+import com.mapbox.maps.MapboxOptions
 #endif
 
 public struct MapView: View {
