@@ -1,0 +1,17 @@
+# Configuration file for https://skip.tools project
+#
+# Kotlin dependencies and Gradle build options for this module can be configured here
+build:
+  contents:
+    - block: 'dependencies'
+      contents:
+        - implementation("com.mapbox.maps:android:11.6.0")
+        - implementation("com.mapbox.extension:maps-compose:11.6.0")
+        
+settings:
+  contents:
+    - block: 'dependencyResolutionManagement'
+      contents:
+        - block: 'repositories'
+          contents:
+            - "maven {\n\t\t\turl = uri(\"https://api.mapbox.com/downloads/v2/releases/maven\")\n\t\t\tcredentials.username = \"mapbox\"\n\t\t\tcredentials.password = providers.gradleProperty(\"MAPBOX_DOWNLOADS_TOKEN\").get()\n\t\t\tauthentication.create<BasicAuthentication>(\"basic\")\n\t\t}"
