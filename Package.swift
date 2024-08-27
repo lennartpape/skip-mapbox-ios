@@ -16,6 +16,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://source.skip.tools/skip.git", from: "1.0.7"),
         .package(url: "https://source.skip.tools/skip-foundation.git", from: "1.0.0"),
+        .package(url: "https://source.skip.tools/skip-ui.git", from: "1.0.0"),
         .package(url: "https://github.com/mapbox/mapbox-maps-ios.git", from: "11.5.0")
     ],
     targets: [
@@ -23,6 +24,7 @@ let package = Package(
             name: "SkipMapbox",
             dependencies: [
                 .product(name: "SkipFoundation", package: "skip-foundation"),
+                .product(name: "SkipUI", package: "skip-ui"),
                 .product(name: "MapboxMaps", package: "mapbox-maps-ios", condition: .when(platforms: [.iOS]))
             ],
             resources: [.process("Resources")],
@@ -32,6 +34,7 @@ let package = Package(
             name: "SkipMapboxTests",
             dependencies: [
                 "SkipMapbox", .product(name: "SkipTest", package: "skip"),
+                .product(name: "SkipUI", package: "skip-ui"),
                 .product(name: "MapboxMaps", package: "mapbox-maps-ios", condition: .when(platforms: [.iOS]))
             ],
             resources: [.process("Resources")],
