@@ -22,7 +22,9 @@ import com.mapbox.maps.MapboxExperimental
 #endif
 
 public struct MapView: View {
+    #if !SKIP
     @State var viewport: Viewport = .styleDefault
+    #endif
     
     public init() {
         
