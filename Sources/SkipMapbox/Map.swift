@@ -21,7 +21,7 @@ import com.mapbox.geojson.Point
 import com.mapbox.maps.MapboxExperimental
 #endif
 
-public struct Map: View {
+public struct MapView: View {
     @State var viewport: Viewport = .styleDefault
     
     public init() {
