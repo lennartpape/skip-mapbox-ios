@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
 import com.mapbox.geojson.Point
 import com.mapbox.maps.MapboxExperimental
+import com.mapbox.maps
 #endif
 
 public struct MapView: View {
@@ -26,8 +27,8 @@ public struct MapView: View {
     @State var viewport: Viewport = .styleDefault
     #endif
     
-    public init() {
-        
+    public init(accessToken: String) {
+        MapboxOptions.accessToken = accessToken
     }
     
     #if !SKIP
