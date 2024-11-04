@@ -16,7 +16,6 @@ import CoreLocation
 import com.mapbox.maps.`extension`.compose.animation.viewport.__
 import com.mapbox.maps.plugin.viewport.data.DefaultViewportTransitionOptions
 import com.mapbox.maps.plugin.viewport.data.OverviewViewportStateOptions
-import com.mapbox.maps.plugin.viewport.data.FollowPuckViewportStateBearing
 import com.mapbox.maps.plugin.viewport.data.FollowPuckViewportStateOptions
 import com.mapbox.maps.__
 import com.mapbox.geojson.Point
@@ -90,7 +89,7 @@ public class Viewport: Equatable {
         func toFollowPuckViewportStateOptions() -> FollowPuckViewportStateOptions {
             return FollowPuckViewportStateOptions.Builder()
                 .zoom(zoom)
-                .bearing(bearing)
+                .bearing(bearing.mapboxValue)
                 .pitch(pitch)
                 .build()
         }
@@ -161,8 +160,8 @@ public class Viewport: Equatable {
     
     public static func followPuck(
         zoom: CGFloat,
-        bearing: FollowPuckViewportStateBearing,
-        pitch: CGFloat
+        bearing: FollowPuckViewportStateBearing = .constant(0.0),
+        pitch: CGFloat = 0.0
     ) -> Viewport {
         let options = FollowPuckOptions(
             zoom: zoom,
@@ -242,6 +241,21 @@ public class Viewport: Equatable {
                 animationData.animation.mapAnimationOptions,
                 completionListener: animationData.completion
             )
+        }
+    }
+}
+
+public enum FollowPuckViewportStateBearing {
+    case constant(_ bearing: CLLocationDirection)
+    case heading
+    case course
+    
+    var mapboxValue: com.mapbox.maps.plugin.viewport.data.FollowPuckViewportStateBearing? {
+        switch self {
+        case let .constant(bearing):
+            return com.mapbox.maps.plugin.viewport.data.FollowPuckViewportStateBearing.Constant(bearing)
+        case .heading, .course:
+            return com.mapbox.maps.plugin.viewport.data.FollowPuckViewportStateBearing.SyncWithLocationPuck
         }
     }
 }
