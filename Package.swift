@@ -7,7 +7,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "skip-mapbox",
+    name: "skip-mapbox-ios",
     defaultLocalization: "en",
     platforms: [.iOS(.v16), .macOS(.v13), .tvOS(.v16), .watchOS(.v9), .macCatalyst(.v16)],
     products: [
