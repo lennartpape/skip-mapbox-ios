@@ -4,7 +4,7 @@
 //
 //  Created by John Bent on 9/6/24.
 //
-#if SKIP || !os(macOS)
+#if SKIP || !os(iOS)
 import Foundation
 
 #if SKIP

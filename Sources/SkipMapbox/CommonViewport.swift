@@ -5,7 +5,7 @@
 //  Created by John Bent on 8/28/24.
 //
 
-#if SKIP || !os(macOS)
+#if SKIP || !os(iOS)
 
 import Foundation
 import SwiftUI

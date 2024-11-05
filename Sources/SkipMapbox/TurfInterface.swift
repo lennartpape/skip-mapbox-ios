@@ -5,7 +5,7 @@
 //  Created by John Bent on 9/3/24.
 //
 
-#if SKIP || !os(macOS)
+#if SKIP || !os(iOS)
 
 #if !SKIP
 import CoreLocation

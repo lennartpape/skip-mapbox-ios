@@ -7,7 +7,7 @@
 
 import Foundation
 
-#if SKIP || !os(macOS)
+#if SKIP || !os(iOS)
 
 import Foundation
 import SwiftUI
